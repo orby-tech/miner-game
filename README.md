@@ -22,3 +22,4 @@ TODO:
 - [ ] Remove unused models
 - [ ] Add codegeneration for models by openapi
 - [ ] Add rooms for websockets in api layer
+- [ ] Fix failing on precommit hooks

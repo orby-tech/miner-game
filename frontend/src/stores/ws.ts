@@ -15,7 +15,13 @@ export const useWsStore = defineStore('ws', () => {
 
   const ws = ref<WebSocket | null>(null)
 
+  let initTimeoutSub: ReturnType<typeof setTimeout> | null = null
+
   const initWs = async (): Promise<void> => {
+    if (initTimeoutSub) {
+      clearTimeout(initTimeoutSub)
+    }
+
     return new Promise((resolve) => {
       ws.value = new WebSocket(import.meta.env.VITE_WS_URL as string)
       ws.value.onopen = () => {
@@ -25,14 +31,22 @@ export const useWsStore = defineStore('ws', () => {
       ws.value.onclose = () => {
         console.log('ws closed')
 
-        setTimeout(() => {
+        if (initTimeoutSub) {
+          clearTimeout(initTimeoutSub)
+        }
+
+        initTimeoutSub = setTimeout(() => {
           initWs()
         }, 1000)
       }
       ws.value.onerror = () => {
         console.log('ws error')
 
-        setTimeout(() => {
+        if (initTimeoutSub) {
+          clearTimeout(initTimeoutSub)
+        }
+
+        initTimeoutSub = setTimeout(() => {
           initWs()
         }, 1000)
       }
