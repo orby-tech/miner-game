@@ -138,6 +138,11 @@ export const useWsStore = defineStore('ws', () => {
   }
 
   const send = (events: ClientEvents[]) => {
+    if (!ws.value?.OPEN) {
+      console.log('ws not open')
+      return
+    }
+
     if (ws.value) {
       ws.value.send(JSON.stringify(events))
     }
