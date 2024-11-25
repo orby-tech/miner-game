@@ -48,7 +48,9 @@ export class EventsService {
           isDimond,
         );
 
-        this.gamesService.addStats(eventBody.roomId, eventBody.userName);
+        if (isDimond) {
+          this.gamesService.addStats(eventBody.roomId, eventBody.userName);
+        }
 
         const isGameFinished = this.gamesService.isGameFinished(
           eventBody.roomId,
