@@ -26,17 +26,19 @@ const maxCountOfDiamonds = computed(() => {
 const startGame = async () => {
   console.log('Game started!')
 
-  if (!route.params.roomId) {
+  let roomId = route.params.roomId
+
+  if (!roomId) {
     console.log('Room ID is not provided!')
 
-    const roomId = Math.random().toString(36).substring(7)
+    roomId = Math.random().toString(36).substring(7)
 
     // Redirect to the same route with the room ID
 
     router.push({
       name: 'room',
       params: {
-        roomId,
+        roomId: roomId,
       },
     })
 
@@ -44,18 +46,22 @@ const startGame = async () => {
     navigator.clipboard.writeText(`${window.location.origin}/room/${roomId}`)
 
     $toast.success('URL copied to the clipboard!')
+
+    roomId = roomId
   }
 
-  await fetch(`${import.meta.env.VITE_API_URL}/room/${route.params.roomId}/gen-new-game`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      diamondCount: countOfDiamonds.value,
-      side: sizeOfTheField.value,
-    }),
-  })
+  setTimeout(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/room/${roomId}/gen-new-game`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        diamondCount: countOfDiamonds.value,
+        side: sizeOfTheField.value,
+      }),
+    })
+  }, 100)
 }
 
 // if countOfDiamonds more than maxCountOfDiamonds, set countOfDiamonds to maxCountOfDiamonds
