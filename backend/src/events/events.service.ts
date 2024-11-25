@@ -112,7 +112,11 @@ export class EventsService {
           return;
         }
 
-        this.usersService.setUserRoom(client, event['room:join'].roomId);
+        this.usersService.setUserRoom(
+          client,
+          event['room:join'].roomId,
+          event['room:join'].userName,
+        );
 
         this.runServerEvents([
           {
