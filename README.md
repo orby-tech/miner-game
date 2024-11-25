@@ -1,3 +1,7 @@
+## Live preview
+- Stand [https://miner-game.orby-tech.space/](https://miner-game.orby-tech.space/)
+- OpenAPI - [https://miner-game.orby-tech.space/api/docs](https://miner-game.orby-tech.space/api/docs)
+
 ## Prepare
 ### Install front-end dependencies
 ```bash
