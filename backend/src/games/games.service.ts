@@ -104,7 +104,11 @@ export class GamesService {
     }
 
     return game.map.every((row) =>
-      row.every((field) => field.status === FieldStatus.Opened),
+      row.every(
+        (field) =>
+          field.status === FieldStatus.Opened ||
+          field.type !== FieldType.Diamond,
+      ),
     );
   }
 
