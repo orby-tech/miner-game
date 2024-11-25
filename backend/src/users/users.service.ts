@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import e from 'express';
 
 export type User = {
   name: string;
