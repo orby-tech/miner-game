@@ -1,0 +1,17 @@
+FROM node:20
+
+WORKDIR /app
+
+COPY ./frontend/package.json /app/frontend/package.json
+
+WORKDIR /app/frontend
+
+RUN npm install
+
+COPY ./frontend /app/frontend
+COPY ./common /app/common
+
+
+RUN npm run build
+
+CMD ["npm", "run", "preview", "--" , "--host"]

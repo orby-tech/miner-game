@@ -12,9 +12,9 @@ npm install
 
 
 TODO:
-- [] Replace console.log with logger
-- [] Replace stateful services with entities and db transactions
-- [] Add tests
-- [] Remove unused models
-- [] Add codegeneration for models by openapi
-- [] Add rooms for websockets in api layer
+- [ ] Replace console.log with logger
+- [ ] Replace stateful services with entities and db transactions
+- [ ] Add tests
+- [ ] Remove unused models
+- [ ] Add codegeneration for models by openapi
+- [ ] Add rooms for websockets in api layer
