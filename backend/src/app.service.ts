@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { PublicField, PublicFieldType, PublicGame } from '../../common/game';
-import { FieldStatus, Game } from './models/game/interfaces';
+import { PublicGame } from '../../common/game';
+import { Game } from './models/game/interfaces';
 import { GamesService } from './games/games.service';
 import { EventsService } from './events/events.service';
 import { ServerEvents } from '../../common/events';

@@ -25,7 +25,7 @@ export class EventsGateway
     console.log('WebSocket initialized');
   }
 
-  handleConnection(client: any, ...args: any[]) {
+  handleConnection(client: any) {
     console.log('Client connected');
 
     client.on('message', (message) => {
